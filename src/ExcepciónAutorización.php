@@ -10,7 +10,7 @@ use Exception;
  *
  * @author Oliver Etchebarne <yo@drmad.org>
  */
-class ExcepciónAutorización extends Exception
+class ExcepciónAutorización extends ExcepciónFabo
 {
 
 }

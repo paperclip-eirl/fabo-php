@@ -9,7 +9,7 @@ use Exception;
  *
  * @author Oliver Etchebarne <yo@drmad.org>
  */
-class ExcepciónParámetros extends Exception
+class ExcepciónParámetros extends ExcepciónFabo
 {
 
 }

@@ -9,7 +9,7 @@ use Exception;
  * librería.
  * @author Oliver Etchebarne <yo@drmad.org>
  */
-class ExcepciónFatal extends Exception
+class ExcepciónFatal extends ExcepciónFabo
 {
 
 }

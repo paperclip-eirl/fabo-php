@@ -10,7 +10,7 @@ use Exception;
  *
  * @author Oliver Etchebarne <yo@drmad.org>
  */
-class ExcepciónNegociación extends Exception
+class ExcepciónNegociación extends ExcepciónFabo
 {
 
 }
