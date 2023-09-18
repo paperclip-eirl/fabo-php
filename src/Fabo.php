@@ -91,6 +91,18 @@ class Fabo
 
             $this->respuesta = $respuesta;
 
+            // En desarrollo es posible que no existe 'descripcion_error', pero
+            // si 'sunat_respuesta'. Le damos preferencia en caso de error
+            $mensaje_error = '';
+            if (key_exists('sunat_respuesta', $respuesta)) {
+                $mensaje_error = "[SUNAT {$respuesta['sunat_respuesta']}] {$respuesta['sunat_descripcion']}";
+            } elseif (key_exists('descripcion_error', $respuesta)) {
+                $mensaje_error = $respuesta['descripcion_error'];
+                if ($respuesta['descripcion_extra'] ?? false) {
+                    $mensaje_error .= ' - ' . $respuesta['descripcion_extra'];
+                };
+            }
+
             // Errores fatales.
             if ($code >= 500) {
                 throw new ExcepciónFatal("Error interno de la API. Por favor, comuníquese con el administrador.", $code);
@@ -98,17 +110,17 @@ class Fabo
 
             // Errores de parámetros del comando
             if ($code == 400) {
-                throw new ExcepciónParámetros($respuesta['descripcion_error'] . ' - ' . $respuesta['descripcion_extra'], $code);
+                throw new ExcepciónParámetros($mensaje_error, $code);
             }
 
             // Errores de autorización
             if ($code == 403) {
-                throw new ExcepciónAutorización($respuesta['descripcion_error'], $code);
+                throw new ExcepciónAutorización($mensaje_error, $code);
             }
 
             // Errores de negociación
             if ($code == 406) {
-                throw new ExcepciónNegociación($respuesta['descripcion_error'], $code);
+                throw new ExcepciónNegociación($mensaje_error, $code);
             }
 
             // No debería haber otro error acá
