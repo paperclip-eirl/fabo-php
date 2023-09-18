@@ -13,9 +13,6 @@ use InvalidArgumentException;
  */
 class Fabo
 {
-    private $parámetros = [];
-    private $items = [];
-
     /** Respuesta de la API, para obtener con obtenerRespuesta() */
     private $respuesta = [];
 
