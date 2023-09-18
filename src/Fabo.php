@@ -174,9 +174,25 @@ class Fabo
     }
 
     /**
+     * Ejecuta el comando "consultar_ruc"
+     */
+    public function consultar_ruc(...$parámetros): array
+    {
+        return $this->ejecutar('consultar_ruc', $parámetros);
+    }
+
+    /**
      * Ejecuta el comando "consultar_ticket"
      */
     public function consultarTicket(...$parámetros): array
+    {
+        return $this->ejecutar('consultar_ticket', $parámetros);
+    }
+
+    /**
+     * Ejecuta el comando "consultar_ticket"
+     */
+    public function consultar_ticket(...$parámetros): array
     {
         return $this->ejecutar('consultar_ticket', $parámetros);
     }
